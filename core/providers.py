@@ -1,25 +1,26 @@
 class GGX_Data_Engine:
     def __init__(self):
-        # Chaque produit est lié à un ID Whop qui surveille le Webhook
         self.payload = [
             {
-                "id": "GGX-DRIL-01",
-                "name": "DRILL LOUDNESS AUDITOR",
-                "price": "44,99 $US",
-                "url": "https://whop.com/checkout/plan_R9m4vKqW2B6x7/",
+                "id": "GGX-TECH-01",
+                "name": "NOM_DU_PRODUIT_ICI",
+                "price": "44.99 $USD",
+                "url": "LIEN_WHOP_ICI",
                 "img": "https://files.whop.com/logos/GGX_TechLabs_Logo.png",
-                "desc": "Analyseur LUFS - Webhook Auto-Delivery Active.",
-                "webhook": "enabled"
+                "type": "SOFTWARE",
+                "desc": "DESCRIPTION_COURTE"
             },
             {
-                "id": "GGX-LOFI-02",
-                "name": "LOFI NOISE SCULPTOR",
-                "price": "14,99 $US",
-                "url": "https://whop.com/checkout/plan_Y2n3uXpL1T5z8/",
-                "img": "https://files.whop.com/logos/GGX_TechLabs_Logo.png",
-                "desc": "DSP Engine - V2 API Connector Active.",
-                "webhook": "enabled"
+                "id": "GGX-STEM-01",
+                "name": "NOM_DE_LA_TRACK_ICI",
+                "price": "4.99 $USD",
+                "url": "LIEN_WHOP_ICI",
+                "img": "https://files.whop.com/logos/GGX_StudiosMedia_Logo.png",
+                "type": "STEM",
+                "desc": "BASS / DRUMS / VOCAL"
             }
+            # Tu peux rajouter autant de blocs { ... } que tu veux ici !
         ]
+
     def get_payload(self):
         return self.payload
