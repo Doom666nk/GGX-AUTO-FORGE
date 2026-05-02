@@ -1,11 +1,10 @@
 import os
-import requests
-from bs4 import BeautifulSoup
-from flask import Flask, render_template_string, jsonify
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
-# NOTRE BASE DE DONNÉES (AUTO-REMPLIE PAR ASPIRATION)
+# TON INVENTAIRE - PROPRIÉTÉ DE GGX
+# On a nos 3 piliers, et on laisse la porte ouverte pour les 74 suivants
 PRODUCTS = [
     {
         "id": "GGX-TECH-01",
@@ -14,41 +13,42 @@ PRODUCTS = [
         "price": "44,99 $US",
         "url": "https://whop.com/checkout/plan_R9m4vKqW2B6x7/",
         "color": "#00ff41"
+    },
+    {
+        "id": "GGX-STUDIO-01",
+        "division": "STUDIOS",
+        "name": "JAM TRACK: BLUES Am",
+        "price": "39,99 $US",
+        "url": "https://whop.com/checkout/plan_JAM_OFFICIEL",
+        "color": "#ff00ff"
+    },
+    {
+        "id": "GGX-SOL-01",
+        "division": "SOLUTIONS",
+        "name": "BUSINESS ARCHITECT",
+        "price": "99,99 $US",
+        "url": "https://whop.com/checkout/plan_SOL_OFFICIEL",
+        "color": "#00d1ff"
     }
+    # 📥 LES PROCHAINES ASPIRATIONS ARRIVERONT ICI
 ]
-
-# FONCTION D'ASPIRATION (CRAWLER)
-def aspirer_produit(url_source):
-    try:
-        # Ici on simule l'aspiration des données Whop ou de ta forge
-        # Dans un cas réel, on va chercher les balises <title> et les prix
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        r = requests.get(url_source, headers=headers, timeout=5)
-        if r.status_code == 200:
-            return {"status": "SUCCESS", "url": url_source}
-    except Exception as e:
-        return {"status": "ERROR", "msg": str(e)}
-
-@app.route('/admin/aspirer/<path:target_url>')
-def api_aspirer(target_url):
-    # Cette route te permet de dire au Cloud : "Aspire ce lien !"
-    result = aspirer_produit(target_url)
-    return jsonify(result)
 
 @app.route('/')
 def index():
-    # Ton design V5.0 Empire reste inchangé
     return render_template_string("""
-    <h1 style="color:#c4984a;">🛡️ GGX EMPIRE — ASPIRATION ACTIVE</h1>
-    <div class="grid">
-        {% for p in products %}
-        <div class="card" style="border-top: 4px solid {{ p.color }};">
-            <h3>{{ p.name }}</h3>
-            <p>{{ p.price }}</p>
-            <a href="{{ p.url }}" class="buy-btn" style="color:{{ p.color }};">ACQUISITION</a>
+    <body style="background:#080a0c; color:#e8ecf0; font-family:sans-serif;">
+        <h1 style="color:#c4984a; text-align:center;">🛡️ EMPIRE CORE V5.0</h1>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:20px;">
+            {% for p in products %}
+            <div style="border:1px solid #333; border-top:5px solid {{p.color}}; padding:20px; background:#0e1114;">
+                <small style="color:{{p.color}}">{{p.division}}</small>
+                <h3>{{p.name}}</h3>
+                <div style="font-size:1.5rem; margin:10px 0;">{{p.price}}</div>
+                <a href="{{p.url}}" style="display:block; border:1px solid {{p.color}}; color:{{p.color}}; text-align:center; padding:10px; text-decoration:none;">ACQUISITION</a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
+    </body>
     """, products=PRODUCTS)
 
 if __name__ == "__main__":
