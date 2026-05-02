@@ -1,15 +1,10 @@
 class GGX_Data_Engine:
     def __init__(self):
-        # STRUCTURE PRÊTE POUR TES 200 PRODUITS
-        # Remplace simplement les '#' par tes vrais liens Whop
+        # ICI TU METS TES VRAIS LIENS DE CHECKOUT WHOP
         self.payload = [
-            {"id": f"UNIT-{i:03d}", 
-             "name": f"GGX ARSENAL PRODUCT {i}", 
-             "price": "49.99", 
-             "img": f"assets/images/product_{i}.jpg", 
-             "url": "https://whop.com/checkout/direct_plan_XXX", # TON LIEN ICI
-             "zip": f"assets/files/bundle_{i}.zip"} 
-            for i in range(1, 201) # Génère automatiquement 200 entrées
+            {"id": "001", "name": "GHOST PROTOCOL V6", "price": "49.99", "img": "assets/images/unit1.jpg", "url": "https://whop.com/checkout/TON_LIEN_1", "zip": "assets/files/pack1.zip"},
+            {"id": "002", "name": "VORTEX SYSTEM PRO", "price": "29.99", "img": "assets/images/unit2.jpg", "url": "https://whop.com/checkout/TON_LIEN_2", "zip": "assets/files/pack2.zip"},
+            # Tu peux continuer jusqu'à 200...
         ]
 
     def get_payload(self):
