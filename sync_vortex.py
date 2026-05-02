@@ -1,26 +1,38 @@
-import re, os
+import sys
+import os
 
-def forge():
-    # On reste sur 200 produits max pour garder le fichier léger
-    products = [
-        {"id": f"{i:03d}", "name": f"Produit {i}", "price": "49.99", "img": f"assets/images/p{i}.jpg", "url": "#", "zip": "#"}
-        for i in range(1, 201)
-    ]
+sys.path.append(os.getcwd())
+from core.providers import GGX_Data_Engine
 
-    catalog_html = ""
-    for p in products:
-        catalog_html += f'''
-        <div class="card">
-            <h3>{p['name']}</h3>
-            <p>{p['price']} USD</p>
-            <a href="{p['url']}" class="btn">ACHAT</a>
-        </div>'''
+engine = GGX_Data_Engine()
+products = engine.get_payload()
 
-    template = f'''<!DOCTYPE html><html><head><style>body{{background:#000;color:#fff;font-family:sans-serif;}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}}</style></head><body><div class="grid">{catalog_html}</div></body></html>'''
+catalog_html = ""
+for p in products:
+    # Attribution de la couleur selon la division
+    color = "#00ff41" # Vert par défaut (Tech)
+    if "SOL" in p['id']: color = "#00d1ff" # Bleu (Solutions)
+    if "STUDIO" in p['id'] or "STEM" in p['id']: color = "#ff00ff" # Violet (Studios)
     
-    with open("index.html", "w") as f:
-        f.write(template)
-    print(f"✅ FORGE RÉPARÉE : index.html créé (Taille normale).")
+    catalog_html += f'''
+    <div class="card" style="border-color: {color}; box-shadow: 0 0 10px {color}33;">
+        <div class="division-badge" style="background: {color}; color: #000;">{p['id'].split('-')[1]}</div>
+        <img src="{p['img']}" class="product-img">
+        <h3 style="color: {color};">{p['name']}</h3>
+        <p class="description">{p['desc']}</p>
+        <div class="price" style="color: {color};">{p['price']}</div>
+        <a href="{p['url']}" class="buy-btn" style="background: {color};">ACHETER MAINTENANT</a>
+    </div>
+    '''
 
-if __name__ == "__main__":
-    forge()
+with open("index.html", "r") as f:
+    content = f.read()
+
+start_tag = ""
+end_tag = ""
+
+if start_tag in content and end_tag in content:
+    new_content = content.split(start_tag)[0] + start_tag + catalog_html + end_tag + content.split(end_tag)[1]
+    with open("index.html", "w") as f:
+        f.write(new_content)
+    print("✅ TUNING TERMINÉ : Couleurs et divisions synchronisées.")
