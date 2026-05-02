@@ -1,10 +1,11 @@
 class GGX_Data_Engine:
     def __init__(self):
-        # ICI TU METS TES VRAIS LIENS DE CHECKOUT WHOP
+        # REMPLACE 'TON_LIEN_ICI' par tes vrais checkout Whop
         self.payload = [
-            {"id": "001", "name": "GHOST PROTOCOL V6", "price": "49.99", "img": "assets/images/unit1.jpg", "url": "https://whop.com/checkout/TON_LIEN_1", "zip": "assets/files/pack1.zip"},
-            {"id": "002", "name": "VORTEX SYSTEM PRO", "price": "29.99", "img": "assets/images/unit2.jpg", "url": "https://whop.com/checkout/TON_LIEN_2", "zip": "assets/files/pack2.zip"},
-            # Tu peux continuer jusqu'à 200...
+            {"id": "001", "name": "VORTEX BYPASS ELITE", "price": "49.99", "url": "https://whop.com/checkout/TON_LIEN_1", "stock": "12"},
+            {"id": "002", "name": "GHOST PROTOCOL V6", "price": "29.99", "url": "https://whop.com/checkout/TON_LIEN_2", "stock": "5"},
+            {"id": "003", "name": "ARSENAL FULL BUNDLE", "price": "99.99", "url": "https://whop.com/checkout/TON_LIEN_3", "stock": "8"},
+            # Ajoute tes autres produits ici...
         ]
 
     def get_payload(self):
