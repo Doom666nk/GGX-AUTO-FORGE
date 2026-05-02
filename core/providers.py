@@ -2,31 +2,40 @@ class GGX_Data_Engine:
     def __init__(self):
         self.payload = [
             {
-                "id": "GGX-TECH-001",
-                "name": "DRILL LOUDNESS AUDITOR | Pro Licence",
-                "price": "44.99 $US",
-                "url": "https://whop.com/checkout/plan_R9m4vKqW2B6x7/",
+                "id": "PACK-001",
+                "name": "MEGA PACK: AM Jam Blues Deluxe",
+                "price": "39.99 $USD",
+                "url": "https://whop.com/checkout/TON_LIEN_ZIP_BLUES",
                 "img": "https://files.whop.com/logos/GGX_TechLabs_Logo.png",
-                "desc": "ITU-R BS.1770 Integrated LUFS Analyzer. Précision chirurgicale pour vos masters.",
-                "stock": "PRODUIT ÉLITE"
+                "desc": "Full Zip: Bass, Drum, Guitar, Vocal & Stems. Qualité Studio.",
+                "stock": "ZIP COMPLET"
             },
             {
-                "id": "GGX-TECH-002",
-                "name": "LOFI NOISE SCULPTOR | Standard Edition",
-                "price": "14.99 $US",
-                "url": "https://whop.com/checkout/plan_Y2n3uXpL1T5z8/",
-                "img": "https://files.whop.com/logos/GGX_TechLabs_Logo.png",
-                "desc": "High-End Lofi DSP Engine & Saturation. Le son analogique dans votre DAW.",
-                "stock": "-20% MAINTENANT"
+                "id": "STEM-001",
+                "name": "STEM: Blues Bass Line (Am)",
+                "price": "4.99 $USD",
+                "url": "https://whop.com/checkout/TON_LIEN_BASS",
+                "img": "https://files.whop.com/logos/GGX_StudiosMedia_Logo.png",
+                "desc": "Piste séparée (WAV). Idéal pour pratique solo.",
+                "stock": "SINGLE TRACK"
             },
             {
-                "id": "GGX-SOL-001",
-                "name": "GGX SOLUTIONS | Consulting",
-                "price": "SUR DEVIS",
-                "url": "https://whop.com/ggx-solutions/",
-                "img": "https://files.whop.com/logos/GGX_Solutions_Logo.png",
-                "desc": "Expertise en déploiement IA et Micro-SaaS. Propulsez votre business.",
-                "stock": "DISPONIBLE"
+                "id": "STEM-002",
+                "name": "STEM: Blues Drum Kit (Am)",
+                "price": "4.99 $USD",
+                "url": "https://whop.com/checkout/TON_LIEN_DRUM",
+                "img": "https://files.whop.com/logos/GGX_StudiosMedia_Logo.png",
+                "desc": "Piste batterie brute. 120 BPM.",
+                "stock": "SINGLE TRACK"
+            },
+            {
+                "id": "PACK-002",
+                "name": "MEGA PACK: Rock Fusion Jam",
+                "price": "39.99 $USD",
+                "url": "https://whop.com/checkout/TON_LIEN_ZIP_ROCK",
+                "img": "https://files.whop.com/logos/GGX_TechLabs_Logo.png",
+                "desc": "Full Zip: Multi-tracks for mixing & practice.",
+                "stock": "ZIP COMPLET"
             }
         ]
 
